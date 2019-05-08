@@ -1,0 +1,22 @@
+<?php
+include 'check-login.php';
+include '../../config/conexion.php';
+
+$DR_CODIGO=$_POST['DR_CODIGO'];
+$EST_CODIGO=$_POST['EST_CODIGO'];
+$DR_MARCA=$_POST['DR_MARCA'];
+$DR_MODELO=$_POST['DR_MODELO'];
+$DR_SERIE=$_POST['DR_SERIE'];
+$DR_TIPO=$_POST['DR_TIPO'];
+$DR_NUMPUERTOSLAN=$_POST['DR_NUMPUERTOSLAN'];
+$DR_NUMPUERTOSSFP=$_POST['DR_NUMPUERTOSSFP'];
+$DR_CONECTIVIDADWIFI=$_POST['DR_CONECTIVIDADWIFI'];
+$DR_CODACTFIJ=$_POST['DR_CODACTFIJ'];
+$DR_OBSERVACION=$_POST['DR_OBSERVACION'];
+
+$sql = ("CALL PRO_UPDR ('$EST_CODIGO','$DR_MARCA','$DR_MODELO','$DR_SERIE','$DR_TIPO','$DR_NUMPUERTOSLAN','$DR_NUMPUERTOSSFP','$DR_CONECTIVIDADWIFI','$DR_OBSERVACION','$DR_CODIGO','$DR_CODACTFIJ')");
+if ($conn->query($sql) === TRUE) {
+            header("location:../dispositivosred.php");
+}
+$conn->close();
+?>
